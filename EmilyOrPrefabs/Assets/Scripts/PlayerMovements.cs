@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatorController : MonoBehaviour
+public class PlayerMovements : MonoBehaviour
 {
-    [SerializeField] Animator anim;
+    [SerializeField] Animator animController;
     [SerializeField] float speed = 10;
 
     private float horizontalInput;
@@ -15,22 +15,14 @@ public class AnimatorController : MonoBehaviour
     private void Update()
     {
         PlayerInput();
-
-        //if (horizontalInput != 0 || verticalInput != 0)
-        //{
-        //    anim.SetFloat("speed", speed);
-        //}
-    }
-    private void FixedUpdate()
-    {
         PlayerMovement();
+        DanceAnim();
     }
 
     private void PlayerMovement()
     {
         velocity = new Vector3(horizontalInput * speed, 0, verticalInput * speed);
         transform.Translate(velocity * Time.deltaTime);
-
     }
 
     private void PlayerInput()
@@ -39,6 +31,22 @@ public class AnimatorController : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
         print(horizontalInput);
         print(verticalInput);
+    }
+
+    public void DanceAnim()
+    {
+        bool fIsPressed = Input.GetKey(KeyCode.F);
+        if (fIsPressed)
+        {
+            animController.SetBool("IsDancing", true);
+           print( animController.GetBool("IsDancing"));
+           
+        }
+        if (!fIsPressed)
+        {
+            animController.SetBool("IsDancing", false);
+            print(animController.GetBool("IsDancing"));
+        }
     }
 
 }
