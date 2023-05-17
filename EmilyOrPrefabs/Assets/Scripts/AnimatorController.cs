@@ -16,7 +16,7 @@ public class AnimatorController : MonoBehaviour
         Move();
         if (horizontalInput != 0 || verticalInput != 0)
         {
-            //anim.SetFloat("running", forwardSpeed);
+            anim.SetFloat("running", Speed);
         }
     }
 
