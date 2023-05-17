@@ -10,6 +10,7 @@ public class AnimatorController : MonoBehaviour
     [SerializeField] float Speed;
     private float horizontalInput;
     private float verticalInput;
+    Vector3 velocity;
 
     private void Update()
     {
@@ -24,5 +25,8 @@ public class AnimatorController : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
+        velocity = new Vector3(horizontalInput, 0, verticalInput);
+        controller.Move(transform.position + velocity * Time.deltaTime);
     }
+
 }
