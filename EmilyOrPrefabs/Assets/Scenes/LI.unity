@@ -234,7 +234,6 @@ GameObject:
   - component: {fileID: 577893531}
   - component: {fileID: 577893530}
   - component: {fileID: 577893536}
-  - component: {fileID: 577893535}
   - component: {fileID: 577893534}
   m_Layer: 0
   m_Name: Player
@@ -341,24 +340,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
---- !u!143 &577893535
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577893528}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &577893536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,9 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fcd2355b5f82fc45a8399451659a253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 577893535}
-  anim: {fileID: 577893534}
-  Speed: 0
+  animController: {fileID: 577893534}
+  speed: 7
 --- !u!1 &1063828827
 GameObject:
   m_ObjectHideFlags: 0
