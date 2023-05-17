@@ -4,29 +4,41 @@ using UnityEngine;
 
 public class AnimatorController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField] CharacterController controller;
     [SerializeField] Animator anim;
-    [SerializeField] float Speed;
+    [SerializeField] float speed = 10;
+
     private float horizontalInput;
     private float verticalInput;
+
     Vector3 velocity;
 
     private void Update()
     {
-        Move();
-        if (horizontalInput != 0 || verticalInput != 0)
-        {
-            anim.SetFloat("running", Speed);
-        }
+        PlayerInput();
+
+        //if (horizontalInput != 0 || verticalInput != 0)
+        //{
+        //    anim.SetFloat("speed", speed);
+        //}
+    }
+    private void FixedUpdate()
+    {
+        PlayerMovement();
     }
 
-    private void Move()
+    private void PlayerMovement()
+    {
+        velocity = new Vector3(horizontalInput * speed, 0, verticalInput * speed);
+        transform.Translate(velocity * Time.deltaTime);
+
+    }
+
+    private void PlayerInput()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        velocity = new Vector3(horizontalInput, 0, verticalInput);
-        controller.Move(transform.position + velocity * Time.deltaTime);
+        print(horizontalInput);
+        print(verticalInput);
     }
 
 }
