@@ -29,8 +29,6 @@ public class PlayerMovements : MonoBehaviour
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        print(horizontalInput);
-        print(verticalInput);
     }
 
     public void DanceAnim()
@@ -39,13 +37,13 @@ public class PlayerMovements : MonoBehaviour
         if (fIsPressed)
         {
             animController.SetBool("IsDancing", true);
-           print( animController.GetBool("IsDancing"));
+           print("Is Dancing");
            
         }
         if (!fIsPressed)
         {
             animController.SetBool("IsDancing", false);
-            print(animController.GetBool("IsDancing"));
+            print("Is Not Dancing");
         }
     }
 
