@@ -6,9 +6,12 @@ public class PlayerMovements : MonoBehaviour
 {
     [SerializeField] Animator animController;
     [SerializeField] float speed;
+    [SerializeField] GameObject particle;
+    [SerializeField] float speedModifier = 1.1f;
 
     private float horizontalInput;
     private float verticalInput;
+    float adjustedSpeed;
 
     Vector3 velocity;
 
@@ -18,16 +21,30 @@ public class PlayerMovements : MonoBehaviour
         PlayerMovement();
         DanceAnim();
         RunAnim();
+        
     }
 
+    private void FixedUpdate()
+    {
+        AdjustedSpeed();
+    }
+
+    private void AdjustedSpeed()
+    {
+        adjustedSpeed = speed * speedModifier;
+    }
     private void PlayerMovement()
     {
-        velocity = new Vector3(horizontalInput * speed, 0, verticalInput * speed);
+        velocity = new Vector3(horizontalInput * adjustedSpeed, 0, verticalInput * adjustedSpeed);
         transform.Translate(velocity * Time.deltaTime);
 
         
     }
 
+    public void SetParticle(bool isOn)
+    {
+        particle.SetActive(isOn);
+    }
     private void PlayerInput()
     {
         horizontalInput = Input.GetAxis("Horizontal");
