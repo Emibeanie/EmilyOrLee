@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovements : MonoBehaviour
 {
     [SerializeField] Animator animController;
-    [SerializeField] float speed = 10;
+    [SerializeField] float speed;
 
     private float horizontalInput;
     private float verticalInput;
@@ -17,12 +17,15 @@ public class PlayerMovements : MonoBehaviour
         PlayerInput();
         PlayerMovement();
         DanceAnim();
+        RunAnim();
     }
 
     private void PlayerMovement()
     {
         velocity = new Vector3(horizontalInput * speed, 0, verticalInput * speed);
         transform.Translate(velocity * Time.deltaTime);
+
+        
     }
 
     private void PlayerInput()
@@ -44,6 +47,23 @@ public class PlayerMovements : MonoBehaviour
         {
             animController.SetBool("IsDancing", false);
             print("Is Not Dancing");
+        }
+    }
+
+    public void RunAnim()
+    {
+       
+
+        if (horizontalInput !=0 || verticalInput != 0)
+        {
+            animController.SetFloat("speed", speed);
+            print("Is Running");
+        }
+
+        else
+        {
+            animController.SetFloat("speed", 0);
+            print("Is Not Running");
         }
     }
 

@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animController: {fileID: 577893534}
-  speed: 7
+  speed: 13
 --- !u!1 &1063828827
 GameObject:
   m_ObjectHideFlags: 0
