@@ -10,7 +10,7 @@ using UnityEngine.Windows;
 public class PlayerMovment : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float jumpHeight = 5f;
+    //[SerializeField] private float jumpHeight = 5f;
     [SerializeField] private float rotationSpeed = 5f;
     [SerializeField] private float runningSpeed = 1.5f;
 
